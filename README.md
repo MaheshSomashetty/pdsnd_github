@@ -3,7 +3,7 @@
 ### Project Title : Explore US Bikeshare Data
 
 ### Description
-The project explores the data related to bike share systems for three major cities in the United States - Chicago, New York City and Washington. Code is written to import data and answer interesting questions about it by computing descriptive statistics.
+The project explores the data related to bike share systems for three major cities in the United States - Chicago, New York City and Washington. Code is written to import data and answer interesting questions about it by computing descriptive statistics. The program will have an interactive experience in the terminal to present these statistics.
 
 ### Files used
 1. chicago.csv
