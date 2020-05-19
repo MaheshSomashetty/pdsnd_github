@@ -272,7 +272,7 @@ def statistics():
     #column can be displayed fully
     pd.set_option('max_colwidth', 100)
 
-    #creates a 'journey' couln that concatenates 'start_station' with
+    #creates a 'journey' column that concatenates 'start_station' with
     #'end_station' for the user popular trip() function
     df['journey'] = df['start_station'].str.cat(df['end_station'], sep =' to ')
 
@@ -296,7 +296,7 @@ def statistics():
         print('\nCalculating the first statistics...')
 
     if time_period == 'none' or time_period == 'month':
-    
+
         #What is the most popular day of the week (Monday, Tuesday, etc.)
         #for start time?
         popular_day(df_filtered)
