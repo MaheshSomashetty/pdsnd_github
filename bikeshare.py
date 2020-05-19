@@ -1,7 +1,9 @@
+#import required packages
 import pandas as pd
 from datetime import datetime
 from datetime import timedelta
 
+#getting input city
 def get_city():
     '''Asks the user for a city and returns the file name for that city's bike
     share data.
@@ -25,6 +27,7 @@ def get_city():
             print('Sorry, I do not understand your input. Please input either'
                   ' Chicago, New York, or Washington.')
 
+#getting input period filter
 def get_time_period():
     '''Asks the user for a time period and returns the specified filter.
     Args:
@@ -40,6 +43,7 @@ def get_time_period():
             print('Sorry, I do not understand your input')
     return time_period
 
+#getting input month
 def get_month():
     '''Asks the user for a month and returns the specified month.
     Args:
@@ -59,6 +63,7 @@ def get_month():
     months = month_dict[month_input.lower()]
     return ('2017-{}'.format(months), '2017-{}'.format(months + 1))
 
+#getting input day
 def get_day():
     '''Asks the user for a day and returns the specified day.
     Args:
@@ -88,6 +93,7 @@ def get_day():
     end_date = start_date + timedelta(days=1)
     return (str(start_date), str(end_date))
 
+#getting popular month
 def popular_month(df):
     '''Finds and prints the most popular month for the start time.
     Args:
@@ -100,6 +106,7 @@ def popular_month(df):
     most_pop_month = months[index - 1]
     print('The most popular month is {}.'.format(most_pop_month))
 
+#getting popular day
 def popular_day(df):
     '''Finds and prints the most popular day of week (Monday, Tuesday, etc.) for start time.
     Args:
@@ -113,6 +120,7 @@ def popular_day(df):
     most_pop_day = days_of_week[index]
     print('The most popular day of week for start time is {}.'.format(most_pop_day))
 
+#getting popular hour
 def popular_hour(df):
     '''Finds and prints the most popular hour of the day for start time.
     Args:
@@ -133,6 +141,7 @@ def popular_hour(df):
     print('The most popular hour of the day for start time'
           ' is {}{}.'.format(pop_hour_readable, am_pm))
 
+#getting trip duration
 def trip_duration(df):
     '''Finds and prints the total trip duration and average trip duration in
        hours, minutes, and seconds.
@@ -155,6 +164,7 @@ def trip_duration(df):
     else:
         print('The average trip duration is {} minutes and {} seconds.'.format(m, s))
 
+#getting popular station
 def popular_stations(df):
     '''Finds and prints the most popular start station and most popular end
     station.
@@ -168,6 +178,7 @@ def popular_stations(df):
     print('The most popular start station is {}.'.format(pop_start))
     print('The most popular end station is {}.'.format(pop_end))
 
+#getting popular trips
 def popular_trip(df):
     '''Finds and prints the most popular trip.
     Args:
@@ -179,6 +190,7 @@ def popular_trip(df):
     # The 'journey' column is created in the statistics() function.
     print('The most popular trip is {}.'.format(most_pop_trip))
 
+#getting info about users
 def users(df):
     '''Finds and prints the counts of each user type.
     Args:
@@ -190,6 +202,7 @@ def users(df):
     cust = df.query('user_type == "Customer"').user_type.count()
     print('There are {} Subscribers and {} Customers.'.format(subs, cust))
 
+#getting info about gender of users
 def gender(df):
     '''Finds and prints the counts of gender.
     Args:
@@ -249,6 +262,7 @@ def display_data(df):
             elif display_more.lower() == 'no':
                 break
 
+#function for calculating the statistics for the questions
 def statistics():
     '''Calculates and prints out the descriptive statictics about a city and
     time period specified by the user via raw input.
@@ -272,7 +286,7 @@ def statistics():
     #column can be displayed fully
     pd.set_option('max_colwidth', 100)
 
-    #creates a 'journey' couln that concatenates 'start_station' with
+    #creates a 'journey' column that concatenates 'start_station' with
     #'end_station' for the user popular trip() function
     df['journey'] = df['start_station'].str.cat(df['end_station'], sep =' to ')
 
@@ -296,7 +310,7 @@ def statistics():
         print('\nCalculating the first statistics...')
 
     if time_period == 'none' or time_period == 'month':
-    
+
         #What is the most popular day of the week (Monday, Tuesday, etc.)
         #for start time?
         popular_day(df_filtered)
